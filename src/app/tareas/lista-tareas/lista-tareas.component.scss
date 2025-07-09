@@ -1,0 +1,48 @@
+.small-trash {
+  padding: 6px;
+  width: auto;
+  height: auto;
+  font-size: 1.2rem;     
+  line-height: 1;
+  box-shadow: 0 0 8px #9e00ff, inset 0 0 4px #a855f7; 
+}
+.small-trash i {
+  display: block;
+}
+
+.task-counter {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.0rem;          
+  letter-spacing: 0.03em;    
+  color: #00e0c6;             
+  text-shadow: 0 0 4px #00e0c6;
+  margin: 1rem auto 0;     
+  max-width: 90%;
+  white-space: nowrap;
+}
+
+.empty-state {
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  color: #66FCF1;     
+  text-align: center;
+  margin: 1.0rem 0;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 0.2em;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+
+
+
+
+

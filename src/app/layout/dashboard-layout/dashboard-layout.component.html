@@ -1,0 +1,26 @@
+<div class="dashboard-shell">
+  <aside class="vertical-nav">
+    <a
+      *ngIf="!auth.isLoggedIn()"
+      routerLink="/login"
+      class="nav-link"
+    >
+      Login
+    </a>
+    <a
+      *ngIf="auth.isLoggedIn()"
+      (click)="logout()"
+      class="nav-link logout-link"
+    >
+      Logout
+    </a>
+  </aside>
+
+  <div class="dashboard-main">
+    <main class="dashboard-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+
+

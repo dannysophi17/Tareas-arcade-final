@@ -1,0 +1,50 @@
+<div class="auth-container">
+  <h1 class="main-title">Crear Cuenta</h1>
+
+  <div class="menu-box auth-box">
+    <form (ngSubmit)="onSubmit()" class="form-flex">
+      <input
+        class="myInput"
+        name="name"
+        [(ngModel)]="name"
+        placeholder="Nombre completo"
+        required
+      />
+
+      <input
+        class="myInput"
+        name="email"
+        [(ngModel)]="email"
+        placeholder="Correo electrónico"
+        type="email"
+        required
+      />
+
+      <input
+        class="myInput"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Contraseña"
+        type="password"
+        required
+      />
+
+      <button type="submit" class="submit-btn">CREAR CUENTA</button>
+    </form>
+
+    <p class="switch-link">
+      ¿Ya tienes cuenta?
+      <a routerLink="/login">Entrar</a>
+    </p>
+
+    <div class="error-box" *ngIf="error">
+      {{ error }}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

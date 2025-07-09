@@ -1,0 +1,46 @@
+<div class="container text-center">
+  <h1 class="main-title animate-sequence mt-4">Mis Tareas</h1>
+
+  <div class="mt-3 mb-3">
+    <button class="myButton" (click)="nuevaTarea()">+ Crear Tarea</button>
+  </div>
+
+  <div class="task-area-box">
+    <p class="text-danger" *ngIf="error">{{ error }}</p>
+
+    <ul
+      *ngIf="tareas.length > 0; else sinTareas"
+      id="taskList"
+      class="list-unstyled text-light fs-5 mt-4"
+    >
+      <li *ngFor="let t of tareas" class="task-card">
+        <h3 class="task-text">{{ t.title }}</h3>
+        <p class="task-text">{{ t.description }}</p>
+        <small class="task-date">Creada: {{ t.createdAt | date:'short' }}</small>
+
+        <div class="arcade-delete-wrapper">
+          <button class="arcade-delete-btn small-trash" (click)="eliminarTarea(t._id)" title="Eliminar">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </li>
+    </ul>
+    <ng-template #sinTareas>
+      <p class="empty-state">
+        Aún no hay tareas<span class="cursor">_</span>
+      </p>
+    </ng-template>
+  </div>
+  <div id="taskCounter" class="task-counter text-center">
+    MISION: {{ tareas.length }} TAREAS PENDIENTES
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
