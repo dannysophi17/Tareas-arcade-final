@@ -4,7 +4,10 @@ import { environment } from '../environment/environment';
 const api = axios.create({ baseURL: environment.baseUrl });
 
 api.interceptors.request.use((config) => {
-  const h: any = (config.headers as any) || {};
+  if (!config.headers) {
+    (config as any).headers = {}; 
+  }
+  const h: any = config.headers;
 
   if (typeof window !== 'undefined' && window.localStorage) {
     const token = localStorage.getItem('token');
@@ -16,8 +19,6 @@ api.interceptors.request.use((config) => {
       }
     }
   }
-
-  (config as any).headers = h;
 
   const url = config.url ?? '';
   if (url && !url.startsWith('/api')) {
