@@ -4,16 +4,20 @@ import { environment } from '../environment/environment';
 const api = axios.create({ baseURL: environment.baseUrl });
 
 api.interceptors.request.use((config) => {
-  const headers = (config.headers ?? {}) as Record<string, string>;
+  const h: any = (config.headers as any) || {};
 
   if (typeof window !== 'undefined' && window.localStorage) {
     const token = localStorage.getItem('token');
     if (token) {
-      headers['x-auth-token'] = token;
+      if (typeof h.set === 'function') {
+        h.set('x-auth-token', token);
+      } else {
+        h['x-auth-token'] = token;
+      }
     }
   }
 
-  config.headers = headers;
+  (config as any).headers = h;
 
   const url = config.url ?? '';
   if (url && !url.startsWith('/api')) {
@@ -24,6 +28,7 @@ api.interceptors.request.use((config) => {
 });
 
 export default api;
+
 
 
 
