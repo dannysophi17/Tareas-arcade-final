@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { environment } from '../environment/environment';
+import { environment } from '../../environments/environment';
 
 const api = axios.create({ baseURL: environment.baseUrl });
 
 api.interceptors.request.use((config) => {
   if (!config.headers) {
-    (config as any).headers = {}; 
+    (config as any).headers = {};
   }
   const h: any = config.headers;
 
@@ -29,6 +29,7 @@ api.interceptors.request.use((config) => {
 });
 
 export default api;
+
 
 
 
